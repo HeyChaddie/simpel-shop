@@ -1,16 +1,16 @@
 import Image from "next/image";
-import { BsCartPlus } from "react-icons/bs";
+import { LiaCartPlusSolid } from "react-icons/lia";
 
 const ProductCard = ({ product }) => {
   return (
-    <article className="bg-[#E2DDD6] rounded-2xl">
-      <Image src={product.thumbnail} alt="Image" width={100} height={100} className="w-full object-cover rounded-tr-2xl rounded-tl-2xl h-80" />
-      <div className="flex justify-between items-center p-4 mt-4">
-        <div>
-          <h2 className="text-lg font-bold flex-wrap">{product.title}</h2>
-          <p>{product.price} $</p>
+    <article className="bg-[#E2DDD6] shadow-md">
+      <Image src={product.thumbnail} alt={product.title} width={100} height={100} className="w-full object-cover h-80" />
+      <div className="p-4">
+        <div className="flex justify-between gap-2">
+          <h2 className="text-lg font-bold">{product.title}</h2>
+          <LiaCartPlusSolid className="text-3xl cursor-pointer shrink-0" />
         </div>
-        <BsCartPlus className="text-2xl cursor-pointer" />
+        <p>{product.price} $</p>
       </div>
     </article>
   );

@@ -8,9 +8,12 @@ export default async function Forsideprodukter() {
     <>
       <Heroforside />
       <section>
-        <p>Find dine nye yndlingsprodukter her!</p>
+        <p style={{ marginLeft: "10%", padding: "20px" }}>Find dine nye yndlingsprodukter her!</p>
         <div
           style={{
+            width: "80%",
+            justifyContent: "center",
+            margin: "0 auto",
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
             gap: "20px",

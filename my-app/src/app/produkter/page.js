@@ -1,6 +1,7 @@
 import { getProducts } from "../../../lib/api";
 import ProductCard from "../components/ProductCard";
 import Navigation from "../components/Navigation";
+import Footer from "../components/Footer";
 
 export default async function ProductsPage() {
   const products = await getProducts();
@@ -12,6 +13,7 @@ export default async function ProductsPage() {
           <ProductCard key={product.id} product={product} />
         ))}
       </section>
+      <Footer />
     </>
   );
 }

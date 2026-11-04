@@ -4,6 +4,7 @@ import OrderTotal from "../components/OrderTotal";
 import Link from "next/link";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
+export const dynamic = "force-dynamic";
 
 export default async function Kurv({ searchParams }) {
   const products = await getProducts();
@@ -15,7 +16,9 @@ export default async function Kurv({ searchParams }) {
     const productQuantity = Number(productIdAndQuantity[1]);
     return { id: productId, quantity: productQuantity };
   });
-  const filteredProducts = products.filter((product) => cartProducts.some((cartProduct) => cartProduct.id === product.id));
+  const filteredProducts = products.filter((product) =>
+    cartProducts.some((cartProduct) => cartProduct.id === product.id),
+  );
   const productsWithQuantity = filteredProducts.map((product) => {
     const cartProduct = cartProducts.find((item) => item.id === product.id);
     return { ...product, quantity: cartProduct ? cartProduct.quantity : 1 };

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { addToCart } from "../cartStorage";
+import { addToCart } from "../cart";
 
 export default function ProductCarousel({ products }) {
   const [canScrollPrevious, setCanScrollPrevious] = useState(false);

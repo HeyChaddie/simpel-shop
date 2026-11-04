@@ -26,10 +26,13 @@ const FetchData = async ({ searchParams }) => {
   console.log("API RESPONSE:", data);
 
   return (
-    <section className="grid grid-cols-3 gap-6 m-auto mt-40">
-      {data.products.map((product) => (
-        <ProductCard key={product.id} product={product} />
-      ))}
-    </section>
+    <div className="m-auto mt-[40px] mb-[50px]">
+      <h1 className="mb-6 text-3xl font-bold text-center">Se vores produkter her!</h1>
+      <section className="grid grid-cols-3 gap-6 m-auto">
+        {data.products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </section>
+    </div>
   );
 };

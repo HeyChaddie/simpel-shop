@@ -75,7 +75,10 @@ export default function ProductCarousel({ products }) {
         className="flex gap-5 overflow-x-auto snap-x snap-mandatory"
       >
         {products.map((product) => (
-          <article key={product.id} className="box-border flex-[0_0_280px] p-[15px] border border-[#ddd] rounded-[10px] snap-start">
+          <article
+            key={product.id}
+            className="box-border flex-[0_0_280px] p-[15px] border border-[#ddd] rounded-[10px] snap-start"
+          >
             {/* Produktbillede */}
             <img src={product.thumbnail} alt={product.title} className="w-full" />
 
@@ -87,7 +90,7 @@ export default function ProductCarousel({ products }) {
             {/* Pris og indkøbskurv */}
             <div className="flex items-center justify-between gap-3 mt-4">
               <strong>{product.price} $</strong>
-
+              <Link href={`/detaljeside?id=${product.id}`}>Se produkt</Link>
               <button
                 type="button"
                 onClick={() => handleAddToCart(product)}

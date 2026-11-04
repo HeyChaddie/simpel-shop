@@ -20,3 +20,15 @@ export async function getProducts(): Promise<Product[]> {
 
   return data.products;
 }
+
+export async function getProduct(id: string): Promise<Product> {
+  const response = await fetch(`https://dummyjson.com/products/${id}`, {
+    cache: "no-store",
+  });
+
+  if (!response.ok) {
+    throw new Error("Kunne ikke hente produkt");
+  }
+
+  return response.json();
+}

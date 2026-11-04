@@ -15,9 +15,7 @@ export default async function Kurv({ searchParams }) {
     const productQuantity = Number(productIdAndQuantity[1]);
     return { id: productId, quantity: productQuantity };
   });
-  const filteredProducts = products.filter((product) =>
-    cartProducts.some((cartProduct) => cartProduct.id === product.id),
-  );
+  const filteredProducts = products.filter((product) => cartProducts.some((cartProduct) => cartProduct.id === product.id));
   const productsWithQuantity = filteredProducts.map((product) => {
     const cartProduct = cartProducts.find((item) => item.id === product.id);
     return { ...product, quantity: cartProduct ? cartProduct.quantity : 1 };
@@ -29,7 +27,7 @@ export default async function Kurv({ searchParams }) {
   return (
     <>
       <Navigation />
-      <section className="bg-[#F5F5F5] w-[80%] flex justify-evenly m-auto mt-40 p-10">
+      <section className="bg-[#F5F5F5] w-[80%] flex justify-evenly m-auto mt-20 mb-20 p-10">
         <article>
           <h2>Din kurv:</h2>
           {productsWithQuantity.map((product) => (

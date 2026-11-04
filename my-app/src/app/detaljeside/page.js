@@ -11,8 +11,8 @@ export default function DetaljeSide({ searchParams }) {
       <Navigation />
       <section className="flex justify-center">
         <div className="w-4/5">
-          <div className="bg-red-500 h-20 flex flex-col justify-center pl-10">
-            <Link href="/produkter">Tilbage</Link>
+          <div className="bg-[#DFCAB5] h-20 flex flex-col justify-center pl-10">
+            <Link href="/produkter">Tilbage til produkter</Link>
           </div>
           <Suspense fallback={<h3>Finder Produkt...</h3>}>
             <FetchDetailData searchParams={searchParams} />

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { getCart, removeFromCart } from "../cartStorage";
+import { getCart, removeFromCart } from "../cart";
 
 export default function CartContents() {
   const [cart, setCart] = useState(null);
@@ -12,11 +12,7 @@ export default function CartContents() {
     try {
       setCart(getCart());
     } catch (loadError) {
-      setError(
-        loadError instanceof Error
-          ? loadError.message
-          : "Indkøbskurven kunne ikke indlæses.",
-      );
+      setError(loadError instanceof Error ? loadError.message : "Indkøbskurven kunne ikke indlæses.");
     }
   }, []);
 
@@ -25,11 +21,7 @@ export default function CartContents() {
       setCart(removeFromCart(productId));
       setError("");
     } catch (removeError) {
-      setError(
-        removeError instanceof Error
-          ? removeError.message
-          : "Produktet kunne ikke fjernes fra kurven.",
-      );
+      setError(removeError instanceof Error ? removeError.message : "Produktet kunne ikke fjernes fra kurven.");
     }
   }
 
@@ -56,33 +48,21 @@ export default function CartContents() {
                   borderRadius: "10px",
                 }}
               >
-                <img
-                  src={product.thumbnail}
-                  alt={product.title}
-                  style={{ width: "80px", height: "80px", objectFit: "contain" }}
-                />
+                <img src={product.thumbnail} alt={product.title} style={{ width: "80px", height: "80px", objectFit: "contain" }} />
                 <div style={{ flex: 1 }}>
                   <h2 style={{ fontWeight: "bold" }}>{product.title}</h2>
                   <p>
                     {product.quantity} × {product.price} $
                   </p>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => handleRemove(product.id)}
-                  aria-label={`Fjern ${product.title} fra kurven`}
-                >
+                <button type="button" onClick={() => handleRemove(product.id)} aria-label={`Fjern ${product.title} fra kurven`}>
                   Fjern
                 </button>
               </article>
             ))}
           </div>
           <p style={{ marginTop: "20px", textAlign: "right", fontWeight: "bold" }}>
-            I alt:{" "}
-            {cart
-              .reduce((total, product) => total + product.price * product.quantity, 0)
-              .toFixed(2)}{" "}
-            $
+            I alt: {cart.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2)} $
           </p>
         </>
       )}

@@ -11,8 +11,8 @@ const Navigation = () => {
       <div className="w-2/7 bg-blue-400 flex flex-row justify-between">
         <Link href="/">Forside</Link>
         <Link href="/produkter">Produkter</Link>
-        <Form className="flex flex-row bg-amber-900">
-          <button type="submit" href="/produkter">
+        <Form action="/produkter" className="flex flex-row bg-amber-900">
+          <button type="submit">
             <FaSearch />
           </button>
           <input type="search" name="query" placeholder="search product"></input>

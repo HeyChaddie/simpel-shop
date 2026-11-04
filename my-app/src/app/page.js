@@ -13,8 +13,10 @@ export default async function Forsideprodukter() {
     <>
       <Navigation />
       <Heroforside />
-      <section className="bg-[#DFCAB5]">
-        <p className="w-[80%] text-center mx-auto p-5 text-4xl font-bold">Scroll dig til dine nye yndlingsprodukter her!</p>
+      <section>
+        <p className="w-[80%] text-center mx-auto p-5 text-4xl font-bold">
+          Scroll dig til dine nye yndlingsprodukter her!
+        </p>
         <ProductCarousel products={products.slice(0, 10)} />
       </section>
       <Footer />

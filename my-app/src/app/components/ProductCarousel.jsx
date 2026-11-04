@@ -18,9 +18,11 @@ export default function ProductCarousel({ products }) {
     const carousel = button.closest("[data-product-carousel]");
     const viewport = carousel?.querySelector("[data-product-carousel-viewport]");
     const firstProduct = viewport?.firstElementChild;
+
     if (!viewport || !firstProduct) return;
 
     const gap = Number.parseFloat(window.getComputedStyle(viewport).columnGap) || 0;
+
     const productWidth = firstProduct.getBoundingClientRect().width;
 
     viewport.scrollBy({
@@ -35,95 +37,63 @@ export default function ProductCarousel({ products }) {
   }
 
   return (
-    <div
-      style={{
-        boxSizing: "border-box",
-        width: "100%",
-        maxWidth: "960px",
-        margin: "0 auto",
-        padding: "0 16px 24px",
-      }}
-      data-product-carousel
-    >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "flex-end",
-          gap: "10px",
-          marginBottom: "16px",
-        }}
-      >
+    <div className="box-border w-full max-w-[960px] mx-auto px-4 pb-6" data-product-carousel>
+      {/* Navigationsknapper */}
+      <div className="flex justify-end gap-2.5 mb-4">
         <button
           type="button"
           onClick={(event) => scroll(-1, event.currentTarget)}
           disabled={!canScrollPrevious}
           aria-label="Vis forrige produkter"
-          style={{
-            ...buttonStyle,
-            cursor: canScrollPrevious ? "pointer" : "not-allowed",
-            opacity: canScrollPrevious ? 1 : 0.45,
-          }}
+          className={`w-[42px] h-[42px] border border-[#ccc] rounded-full bg-white text-2xl leading-none ${
+            canScrollPrevious ? "cursor-pointer opacity-100" : "cursor-not-allowed opacity-[0.45]"
+          }`}
         >
           ←
         </button>
+
         <button
           type="button"
           onClick={(event) => scroll(1, event.currentTarget)}
           disabled={!canScrollNext}
           aria-label="Vis næste produkter"
-          style={{
-            ...buttonStyle,
-            cursor: canScrollNext ? "pointer" : "not-allowed",
-            opacity: canScrollNext ? 1 : 0.45,
-          }}
+          className={`w-[42px] h-[42px] border border-[#ccc] rounded-full bg-white text-2xl leading-none ${
+            canScrollNext ? "cursor-pointer opacity-100" : "cursor-not-allowed opacity-[0.45]"
+          }`}
         >
           →
         </button>
       </div>
+
+      {/* Produkt-carousel */}
       <div
         role="region"
         aria-label="Produkter"
         tabIndex={0}
         data-product-carousel-viewport
         onScroll={(event) => updateScrollButtons(event.currentTarget)}
-        style={{
-          display: "flex",
-          gap: "20px",
-          overflowX: "auto",
-          scrollSnapType: "x mandatory",
-        }}
+        className="flex gap-5 overflow-x-auto snap-x snap-mandatory"
       >
         {products.map((product) => (
-          <article
-            key={product.id}
-            style={{
-              boxSizing: "border-box",
-              flex: "0 0 280px",
-              padding: "15px",
-              border: "1px solid #ddd",
-              borderRadius: "10px",
-              scrollSnapAlign: "start",
-            }}
-          >
-            <img src={product.thumbnail} alt={product.title} style={{ width: "100%" }} />
-            <h2 style={{ fontWeight: "bold" }}>{product.title}</h2>
+          <article key={product.id} className="box-border flex-[0_0_280px] p-[15px] border border-[#ddd] rounded-[10px] snap-start">
+            {/* Produktbillede */}
+            <img src={product.thumbnail} alt={product.title} className="w-full" />
+
+            {/* Produktinformation */}
+            <h2 className="font-bold">{product.title}</h2>
+
             <p>{product.description}</p>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                gap: "12px",
-                marginTop: "16px",
-              }}
-            >
+
+            {/* Pris og indkøbskurv */}
+            <div className="flex items-center justify-between gap-3 mt-4">
               <strong>{product.price} $</strong>
+
               <button
                 type="button"
                 onClick={() => handleAddToCart(product)}
                 aria-label={`Læg ${product.title} i indkøbskurven`}
                 title="Læg i indkøbskurven"
-                style={cartButtonStyle}
+                className="inline-flex items-center justify-center w-[38px] h-[38px] shrink-0 border border-gray-300 rounded-full bg-white text-gray-900 cursor-pointer hover:bg-gray-100 transition-colors"
               >
                 <svg
                   aria-hidden="true"
@@ -142,9 +112,14 @@ export default function ProductCarousel({ products }) {
                 </svg>
               </button>
             </div>
+
+            {/* Bekræftelse ved tilføjelse */}
             {addedProductId === product.id && (
-              <p role="status" style={{ margin: "8px 0 0", fontSize: "0.875rem" }}>
-                Tilføjet til kurven. <Link href="/kurv">Se kurv</Link>
+              <p role="status" className="mt-2 text-sm">
+                Tilføjet til kurven.{" "}
+                <Link href="/kurv" className="text-blue-600 underline hover:text-blue-800">
+                  Se kurv
+                </Link>
               </p>
             )}
           </article>
@@ -153,28 +128,3 @@ export default function ProductCarousel({ products }) {
     </div>
   );
 }
-
-const buttonStyle = {
-  width: "42px",
-  height: "42px",
-  border: "1px solid #ccc",
-  borderRadius: "50%",
-  background: "white",
-  cursor: "pointer",
-  fontSize: "24px",
-  lineHeight: 1,
-};
-
-const cartButtonStyle = {
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
-  width: "38px",
-  height: "38px",
-  flexShrink: 0,
-  border: "1px solid #d1d5db",
-  borderRadius: "50%",
-  background: "#fff",
-  color: "#111827",
-  cursor: "pointer",
-};

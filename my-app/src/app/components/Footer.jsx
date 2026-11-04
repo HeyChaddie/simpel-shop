@@ -1,13 +1,13 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="mt-auto h-50 bg-amber-800 flex flex-row justify-between items-center p-4">
+    <footer className="mt-auto h-50 bg-[#A46323] flex flex-row justify-between items-center p-4">
       <div className="flex flex-col">
         <Link href="/">
-          <h2>Logo</h2>
+          <Image src="/logo1.png" alt="Mavelle – Your world, your style" width={192} height={128} className="h-24 w-auto object-contain" />
         </Link>
-        <p>slogan her</p>
       </div>
       <div className="flex flex-col">
         <Link href="/">Forside</Link>

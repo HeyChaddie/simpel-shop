@@ -10,7 +10,7 @@ const AddedToCart = ({ product }) => {
           <h2>{product.title}</h2>
           <p>{product.price} $</p>
           <div className="flex gap-2 items-center">
-            <p>+-</p>
+            <p>Qty: {product.quantity}</p>
             <IoTrashOutline className="mt-2 cursor-pointer" />
           </div>
         </div>

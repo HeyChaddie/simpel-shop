@@ -1,9 +1,8 @@
 function Header() {
   return (
-    <header style={{ marginLeft: "10%", padding: "20px" }}>
-      <h1 style={{ fontSize: "2.25rem", fontWeight: "bold" }}> Velkommen til vores butik</h1>
-      <p style={{ margin: "10px 0" }}>
-        {" "}
+    <header className="p-5 bg-[#DFCAB5]">
+      <h1 className="text-4xl font-bold text-center"> Velkommen til vores butik</h1>
+      <p className="ml-[20%] p-5">
         Se vores udvalg af produkter her! <br />
         Hos os finder du alt fra elektronik til tøj og accessories. Vi har noget for enhver smag og budget. <br />
         Vi tilbyder hurtig levering og nem returnering, så du kan handle med ro i sindet. <br />
@@ -11,17 +10,7 @@ function Header() {
       </p>
       <button
         type="button"
-        style={{
-          marginTop: "12px",
-          padding: "12px 20px",
-          border: "none",
-          borderRadius: "8px",
-          backgroundColor: "#111827",
-          color: "#fff",
-          fontSize: "1rem",
-          fontWeight: "600",
-          cursor: "pointer",
-        }}
+        className="mt-3 mx-auto block px-5 py-3 border-0 rounded-lg bg-gray-900 text-white text-base font-semibold cursor-pointer"
       >
         Søg bland vores produkter
       </button>

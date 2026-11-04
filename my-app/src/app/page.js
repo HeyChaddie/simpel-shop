@@ -15,7 +15,7 @@ export default async function Forsideprodukter() {
       <Heroforside />
       <section className="bg-[#DFCAB5]">
         <p className="w-[80%] text-center mx-auto p-5 text-4xl font-bold">
-          Scroll dig til dine nye yndlingsprodukter her!
+          Udforsk dig til dine nye yndlingsprodukter her!
         </p>
         <Firevarer />
       </section>

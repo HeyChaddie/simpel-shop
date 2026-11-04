@@ -1,5 +1,5 @@
-const Kurv = () => {
-  return <>Kurv</>;
-};
+import CartContents from "../components/CartContents";
 
-export default Kurv;
+export default function CartPage() {
+  return <CartContents />;
+}

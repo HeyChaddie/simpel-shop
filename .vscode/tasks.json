@@ -2,14 +2,14 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"label": "Start Next.js development server",
+			"label": "Start simpel-shop (Next.js)",
 			"type": "shell",
 			"command": "npm",
 			"args": [
-				"--prefix",
-				"my-app",
 				"run",
-				"dev"
+				"dev",
+				"--prefix",
+				"my-app"
 			],
 			"isBackground": true,
 			"problemMatcher": []
